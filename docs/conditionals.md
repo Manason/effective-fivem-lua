@@ -13,7 +13,7 @@ end
 return name or "John Doe"
 ```
 
-## Do Not Use nil in Comparisons
+## Avoid nil in Comparisons involving non-boolean values
 
 ### Implied ~= nil
 ```lua title="BAD"
