@@ -1,0 +1,74 @@
+# Tables
+
+## Imply Array Indices
+```lua title="BAD"
+local myTable = {
+    [1] = "first index",
+    [2] = "second index",
+    [3] = "third index"
+}
+```
+
+```lua title="GOOD"
+local myTable = {
+    "first index",
+    "second index",
+    "third index"
+}
+```
+## Dereferencing
+
+### Prefer object access for constant keys, and array access for non-constant keys
+```lua
+local company = {
+    boss = "Sam"
+}
+```
+```lua title="BAD"
+local boss = company["boss"]
+```
+```lua title="GOOD"
+local boss = company.boss
+```
+
+### Extract duplicate table dereferences into local variables
+This is both a readability and performance boost
+```lua title="BAD"
+local concatenation = myTable["key"] .. myTable["key"]
+```
+```lua title="GOOD"
+local myTableValue = myTable["key"]
+local concatenation = myTableValue .. myTableValue
+```
+
+## Do Not Use table.insert()
+It has horrible performance
+
+### Inserting at the end of a table
+```lua title="BAD"
+table.insert(myTable, "value")
+```
+```lua title="GOOD"
+myTable[#myTable + 1] = "value"
+```
+### Inserting in the middle of a table
+```lua title="BAD"
+table.insert(myTable, "key", "value")
+```
+```lua title="GOOD"
+myTable["key"] = "value"
+```
+
+## Use numeric for loops when iterating over an array
+This is a performance boost
+
+```lua title="BAD"
+for k, v in pairs(myArray) do
+    print(k .. ", " .. v)
+end
+```
+```lua title="GOOD"
+for i=1, #myArray do
+    print(i .. ", " .. k[i])
+end
+```
