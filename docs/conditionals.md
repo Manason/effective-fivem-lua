@@ -1,12 +1,12 @@
 # Conditionals
 
 ## Default Values
-Use 'or' Instead of nil Checks for erformance and readability optimization.
+Use [ternary operator](http://lua-users.org/wiki/TernaryOperator) 'or' Instead of nil checks for performance and readability optimization.
 ```lua title="BAD"
 if name then
     return name
 else
-    return "John Doe" 
+    return "John Doe"
 end
 ```
 ```lua title="GOOD"

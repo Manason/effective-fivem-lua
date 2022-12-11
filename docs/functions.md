@@ -49,7 +49,7 @@ exports('formatName', formatName)
 Use guard clauses to invert if else clauses or extract additional functions. Nesting makes code difficult to read and is a smell that a function may be doing more than one thing
 ```lua title="BAD"
 local function getFullName(first, last)
-    if first and last
+    if first and last then
         return first .. last
     else
         return nil
