@@ -1,6 +1,7 @@
 # Tables
 
 ## Imply Array Indices
+Other languages don't allow declaring an array with explicit indices. Unless the keys have important meaning that needs to be made clear to the reader, they should be implied.
 ```lua title="BAD"
 local myTable = {
     [1] = "first index",
