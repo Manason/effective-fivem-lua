@@ -16,8 +16,8 @@ function getPlayerObject()
 function dropPlayer()
 ```
 
-## Do not pass an implied function as an argument
-Instead declare the function in a local variable and pass the variable as the argument. This is a huge performance improvement and is often a readability one as well.
+## Avoid passing implied functions as arguments
+Instead declare the function in a local variable and pass the variable as the argument. This has major performance improvements if the calling function is invoked more than once. Some functions such as CreateThread are often only invoked once, so there wouldn't be any performance improvement to localizing the argument function. However, I still recommend it anyway as a defensive measure to avoid the issue entirely if the code were to change in the future.
 
 ```lua title="BAD"
 someFunction(function()
