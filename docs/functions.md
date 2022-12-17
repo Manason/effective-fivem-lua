@@ -1,11 +1,13 @@
 # Functions
 
-Functions should only do one thing, and should be small. If a function is not small, break it up into smaller functions.
+## Size & Scope
+- Functions should only do one thing, and should be small. If a function is not small, break it up into smaller functions.
+- Every line of a function should be at the same abstraction level, which should be one smaller than the name of the function.
+- Functions should normally not be more than 6-10 lines long. A long function is a sign that it may be doing more than one thing, or maybe including low level code mixed with high level code.
 
 ## Naming
-Functions should be named in camelCase format to differentiate from natives and standard lua library functions
-
-Functions should also be named with a leading verb.
+- Functions should be named in camelCase format to differentiate from natives and standard lua library functions
+- Functions should also be named with a leading verb.
 
 ```lua title="BAD"
 function player()
@@ -16,7 +18,43 @@ function getPlayerObject()
 function dropPlayer()
 ```
 
-## Avoid passing implied functions as arguments
+## Parameters
+
+### Limit Number of Parameters
+If needing more than 3 or so parameters for a single function, that may be a sign that the parameters can be grouped within a table and passed as a object, rather than as individual arguments.
+```lua title="BAD"
+function createChar(name, age, height, birthday, nationality)
+
+end
+```
+```lua title="GOOD"
+function createChar(char)
+
+end
+```
+
+### Avoid boolean parameters
+Boolean parameters are a signal that a function is doing two things. Instead, call two different functions that each do one thing.
+```lua title="BAD"
+function printEmotionalState(isHappy)
+    if isHappy then
+        print("happy")
+    else
+        print("sad")
+    end
+end
+```
+```lua title="GOOD"
+function printHappy()
+    print("happy")
+end
+
+function printSad()
+    print("sad")
+end
+```
+
+### Avoid passing implied functions as arguments
 Instead declare the function in a local variable and pass the variable as the argument. This has major performance improvements if the calling function is invoked more than once. Some functions such as CreateThread are often only invoked once, so there wouldn't be any performance improvement to localizing the argument function. However, I still recommend it anyway as a defensive measure to avoid the issue entirely if the code were to change in the future.
 
 ```lua title="BAD"
@@ -30,6 +68,12 @@ local myFunction = function()
 end
 someFunction(myFunction)
 ```
+
+### Parameter Overloads
+Be careful overloading a function. Overloading can be a smell that a function is doing more than one thing. Overloads are useful as wrapper functions, providing different ways to call the same underlying function.
+
+### Optional Parameters
+Required parameters should come before optional ones.
 
 ## Exports
 Exports should export local functions and have a [lua-language-server annotation](https://github.com/sumneko/lua-language-server/wiki/Annotations) to delare the API
@@ -62,7 +106,3 @@ local function getFullName(first, last)
     return first .. last
 end
 ```
-
-## Be careful overloading a function. Consider using an overloaded function as a wrapper to transform to a standard format which is then calls a local function. Overloading can be a smell that a function is doing more than one thing.
-
-## Put required parameters before optional parameters
