@@ -26,3 +26,8 @@ local function printValues(map)
 end
 ```
 
+## Location
+Local variables within a function should be declared as close as possible to the place where they are used. This limits what the developer must keep in their head while reading the code.
+Local variables declared outside of a function should be declared at the top of the file, grouped together.
+Global variables should be declared at the top of the file grouped together. client/server global variables should only be declared within a single client/server file. This helps keep things organized instead of spreading random globals around the resource.
+
