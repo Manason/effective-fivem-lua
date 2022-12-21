@@ -6,7 +6,7 @@
 - Functions should normally not be more than 6-10 lines long. A long function is a sign that it may be doing more than one thing, or maybe including low level code mixed with high level code.
 
 ## Naming
-- Functions should be named in camelCase format to differentiate from natives and standard lua library functions
+- local functions should be named in camelCase format to differentiate from natives and standard lua library functions
 - Functions should also be named with a leading verb.
 
 ```lua title="BAD"
