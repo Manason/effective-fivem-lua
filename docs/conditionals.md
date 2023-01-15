@@ -12,3 +12,16 @@ end
 ```lua title="GOOD"
 return name or "John Doe"
 ```
+
+## Don't Write "if true then return true"
+When returning or setting a variable to the value of the conditional statement itself, don't use an if else block.
+```lua title="BAD"
+if name == "mark" or name == "stacy" then
+   return true
+else
+   return false
+end
+```
+```lua title="GOOD"
+return name == "mark" or name == "stacy"
+```
