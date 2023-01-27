@@ -42,8 +42,8 @@ local myTableValue = myTable["key"]
 local concatenation = myTableValue .. myTableValue
 ```
 
-## Do Not Use table.insert()
-It has horrible performance
+## Avoid table.insert()
+It has horrible performance. It should only be used if needing to insert into an array at a specific index that is not the last index.
 
 ### Inserting at the end of a table
 ```lua title="BAD"
@@ -52,7 +52,7 @@ table.insert(myTable, "value")
 ```lua title="GOOD"
 myTable[#myTable + 1] = "value"
 ```
-### Inserting in the middle of a table
+### Inserting/Overwriting a given key
 ```lua title="BAD"
 table.insert(myTable, "key", "value")
 ```
