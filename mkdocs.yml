@@ -13,10 +13,13 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
+  - toc:
+      permalink: true
 nav:
     - 'index.md'
     - 'structure.md'
     - 'functions.md'
+    - 'events.md'
     - 'tables.md'
     - 'variables.md'
     - 'conditionals.md'
