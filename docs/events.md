@@ -14,8 +14,8 @@ Keeping with the principle of limiting scope, if an event is triggered and handl
 ## Secure Net Events
 GetInvokingResource will be nil if an event is triggered from the opposite side of the network that the event is registered on (client triggering a server event, or server triggering a client event). Since Net Events should be triggered across the network, restrict other ways to call the event to prevent exploits.
 ```lua
-    RegisterNetEvent('resourceName:client:eventName', function()
-        if GetInvokingResource() then return end
-        --- handle the event
-    end)
+RegisterNetEvent('resourceName:client:eventName', function()
+    if GetInvokingResource() then return end
+    --- handle the event
+end)
 ```
