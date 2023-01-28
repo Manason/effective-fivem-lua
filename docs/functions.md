@@ -76,8 +76,8 @@ Be careful overloading a function. Overloading can be a smell that a function is
 ### Optional Parameters
 Required parameters should come before optional ones.
 
-## Exports
-Exports should export local functions and have a [lua-language-server annotation](https://github.com/sumneko/lua-language-server/wiki/Annotations) to delare the API
+## Export Documentation
+Exports should have a [lua-language-server annotation](https://github.com/sumneko/lua-language-server/wiki/Annotations) to delare the API
 ```lua
 --- Puts a space between a first and last name
 ---@param first string first name
