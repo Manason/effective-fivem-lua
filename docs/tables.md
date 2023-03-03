@@ -70,6 +70,6 @@ end
 ```
 ```lua title="GOOD"
 for i=1, #myArray do
-    print(i .. ", " .. k[i])
+    print(i .. ", " .. myArray[i])
 end
 ```
