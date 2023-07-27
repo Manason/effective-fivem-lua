@@ -5,7 +5,7 @@ Event names should be in the form '{resourceName}:{client/server}:{eventName}'
 This allows the reader to tell at a glance what resource the event is triggered from, and whether the event should be handled on the client or server.
 
 ### Past Tense
-An event should describe something that has already happened, without prescribing the desired reaction. This pattern recognizes that many event handlers may exist for the same event, which each handle the event in a different way. Therefore, event names should be past tense.
+An event should describe something that has already happened, without prescribing the desired reaction. This pattern recognizes that many event handlers may exist for the same event, which each handle the event in a different way. Triggering an event should be thought of as the cause, whereas handling an event is the effect. The effect should not be in the event name. While an event name need not strictly be past tense, writing event names using past tense can help developers follow this principle.
 
 ```lua title="BAD"
 local function sendMessage(message)
