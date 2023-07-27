@@ -26,6 +26,8 @@ RegisterNetEvent('resourceName:server:sentMessage', source, message)
 end
 ```
 
+## Use callbacks when wanting to get data back across the network
+It's an anti-pattern to trigger and listen for a separate event to get data back across the network when triggering an event. Instead, use a callback.
 
 ## Use a function instead of an event handler for single resource, non-networked events
 Events differ from functions in that one event can have many handler functions, versus a function call only executes one function. If the event is non-networked and only is intended to be handled by one resource, a function should be used instead.

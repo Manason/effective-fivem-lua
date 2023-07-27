@@ -1,15 +1,7 @@
 # Structure/Scope
 
 ## Prefer Limited Scope
-Variables and functions should be scoped to the smallest visibility needed. Prefer in order
-| Function         | Visibility      |
-|------------------|-----------------|
-| local function   | file            |
-| function         | resource        |
-| export function  | client/server   |
-| AddEventHandler  | client/server   |
-| RegisterNetEvent/Callback | shared |
-
+Variables and functions should be scoped to the smallest visibility needed. Prefer in order, local function, function, export function, AddEventHandler, RegisterNetEvent/Callback
 
 ## Separate Client & Server Files
 Client and server specific files should be organized into their own folders
