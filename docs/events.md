@@ -4,6 +4,9 @@
 Event names should be in the form '{resourceName}:{client/server}:{eventName}'
 This allows the reader to tell at a glance what resource the event is triggered from, and whether the event should be handled on the client or server.
 
+### Past Tense
+An event should describe something that has already happened, without prescribing the desired reaction. This pattern recognizes that many event handlers may exist for the same event, which each handle the event in a different way. Therefore, event names should be past tense.
+
 ## Use a function instead of an event handler for single resource, non-networked events
 Events differ from functions in that one event can have many handler functions, versus a function call only executes one function. If the event is non-networked and only is intended to be handled by one resource, a function should be used instead.
 
