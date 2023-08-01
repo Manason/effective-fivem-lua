@@ -41,3 +41,9 @@ local distance = #(coord1 - coord2)
 ```
 
 ## Use PlayerPedId() instead of GetPlayerPed(-1)
+```lua title="BAD"
+local playerPed = GetPlayerPed(-1)
+```
+```lua title="GOOD"
+local playerPed = PlayerPedId()
+```
