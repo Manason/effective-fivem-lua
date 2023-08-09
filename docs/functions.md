@@ -34,8 +34,8 @@ function createChar(char)
 end
 ```
 
-### Avoid boolean parameters
-Boolean parameters are a signal that a function is doing two things. Instead, call two different functions that each do one thing.
+### Avoid boolean parameters in APIs
+Boolean parameters are a signal that a function is doing two things. Instead, call two different functions that each do one thing. While what is considered an API is ambiguous, a good rule of thumb is not to include boolean parameters in global or exported functions.
 ```lua title="BAD"
 function printEmotionalState(isHappy)
     if isHappy then
