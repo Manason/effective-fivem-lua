@@ -1,12 +1,33 @@
 site_name: Effective FiveM Lua
+site_url: https://manason.github.io/effective-fivem-lua/
+site_author: Manason
+site_description: >-
+  A handbook of tips and guidelines for writing clean, effective code in Lua for GTA 5's FiveM Modding Framework
+
+repo_name: Manason/effective-fivem-lua
 repo_url: https://github.com/Manason/effective-fivem-lua
+
 theme:
-    name: material
-    features:
-        - navigation.instant
-        - navigation.tracking
-        - navigation.expand
-        - content.code.annotate
+  name: material
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.expand
+    - content.code.annotate
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
 markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
@@ -16,11 +37,11 @@ markdown_extensions:
   - toc:
       permalink: true
 nav:
-    - 'index.md'
-    - 'structure.md'
-    - 'functions.md'
-    - 'events.md'
-    - 'tables.md'
-    - 'variables.md'
-    - 'conditionals.md'
-    - 'natives.md'
+  - "index.md"
+  - "structure.md"
+  - "functions.md"
+  - "events.md"
+  - "tables.md"
+  - "variables.md"
+  - "conditionals.md"
+  - "natives.md"
