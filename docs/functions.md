@@ -2,12 +2,11 @@
 
 ## Size & Scope
 - Functions should only do one thing, and should be small. If a function is not small, break it up into smaller functions.
-- Every line of a function should be at the same abstraction level, which should be one smaller than the name of the function.
-- Functions should normally not be more than 6-10 lines long. A long function is a sign that it may be doing more than one thing, or maybe including low level code mixed with high level code.
+- Avoid mixing high level code with low level code in the same function.
 
 ## Naming
 - Local functions should be named in camelCase format to differentiate from natives and standard lua library functions
-- Global functions should named in PascalCase format
+- Global functions should be named in PascalCase format
 - Functions should also be named with a leading verb.
 
 ```lua title="BAD"
@@ -37,7 +36,7 @@ end
 ### Avoid boolean parameters in APIs
 Boolean parameters are a signal that a function is doing two things. Instead, call two different functions that each do one thing. While what is considered an API is ambiguous, a good rule of thumb is not to include boolean parameters in global or exported functions.
 ```lua title="BAD"
-function printEmotionalState(isHappy)
+function PrintEmotionalState(isHappy)
     if isHappy then
         print("happy")
     else
@@ -46,11 +45,11 @@ function printEmotionalState(isHappy)
 end
 ```
 ```lua title="GOOD"
-function printHappy()
+function PrintHappy()
     print("happy")
 end
 
-function printSad()
+function PrintSad()
     print("sad")
 end
 ```
@@ -64,7 +63,7 @@ someFunction(function()
 end)
 ```
 ```lua title="GOOD"
-local myFunction = function()
+local function myFunction()
 
 end
 someFunction(myFunction)
@@ -90,11 +89,13 @@ end
 exports('formatName', formatName)
 ```
 
-## Avoid Nesting
-Use guard clauses to invert if else clauses or extract additional functions. Nesting makes code difficult to read and is a smell that a function may be doing more than one thing
+## Use guard clauses
+Often before doing the "real" work of a function, certain pre-conditions must be met. Guard clauses are conditional statements that provide early returns to check certain conditions. This allows the reader to also exit early, rather than reading the entire function.
+
+Additionally, using guard clauses avoids nesting, which can make code difficult to read. Sometimes though, a simple if statement reads just fine. Use your best judgment.
 ```lua title="BAD"
 local function getFullName(first, last)
-    if first and last then
+    if not nameHidden and first and last then
         return first .. last
     else
         return nil
@@ -103,6 +104,7 @@ end
 ```
 ```lua title="GOOD"
 local function getFullName(first, last)
+    if nameHidden then return end
     if not first or not last then return end
     return first .. last
 end

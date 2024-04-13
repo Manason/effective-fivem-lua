@@ -75,7 +75,7 @@ end
 ```
 
 ## Maintain your own array size variable
-There is a significant performance difference as #array is an O(n) operation. Note that sometimes iterating through the the entire array to find the size is preferable, but a common pattern of starting with an empty array and populating it in a loop should use an array size variable.
+There is a significant performance difference for large arrays as #array is an O(n) operation. Note that sometimes iterating through the the entire array to find the size is preferable, but a common pattern of starting with an empty array and populating it in a loop should use an array size variable.
 
 ```lua title="BAD"
 for i = 1, 100 do
