@@ -45,3 +45,4 @@ nav:
   - "variables.md"
   - "conditionals.md"
   - "natives.md"
+  - "errors.md"
