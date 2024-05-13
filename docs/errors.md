@@ -29,3 +29,21 @@ assert(isPlayerDead(), "player is not dead")
 Some states may be unexpected, but recoverable. In these cases, it may be preferable to log the state, but still allow the operation to proceed. An example of this would be a player selling items to an NPC. If some of the items were failing to sell, it would be better to log/print the error, while allowing the rest of the items to go through.
 
 Keep in mind what execution will be cancelled by throwing an error and use best judgment to decide whether throwing or logging is the better choice.
+
+## Assertions vs Errors as Values
+Assertions cause lua errors to propagate up the stack, forcing callers to handle them via protected calls. While assertions should always be used for unexpected or "impossible" cases, errors as values can be helpful for expected failure cases that we want the caller of the API to handle. This involves returning a success boolean, followed by an optional error code & message. Doing this makes the default behavior of our function fail silently, as it becomes the callers responsibility to decide to handle the error. This can provide a better experience for players as a silent failure may preferable to loud error messages in cases where the player pressed the wrong button for example.
+
+Note that API functions should be idempotent when possible. A no-op result is still considered successful, if the state of the system is the one the caller expects after the function is ran.
+
+### Example Error as Value
+```lua
+function add(a, b)
+    if not a or not b then
+        return nil, {
+            code = 'missing_required_params',
+            message = 'either a or b is nil',
+        }
+    end
+    return a + b
+end
+```
