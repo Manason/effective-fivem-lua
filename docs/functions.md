@@ -97,7 +97,7 @@ exports('GetTable', function()
 end)
 ```
 ```lua title="GOOD"
-exports('GetValue, function(key)
+exports('GetValue', function(key)
     return myTable[key]
 end)
 ```
