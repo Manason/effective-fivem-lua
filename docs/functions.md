@@ -88,6 +88,19 @@ end
 
 exports('formatName', formatName)
 ```
+### Keep returned values small in size
+Since returned values are passed-by-value, there can be a sigificant performance cost to returning large payloads. Benchmarks show it is more performant to have many export calls that return a small amount of data each, than few export calls that return large payloads, even if the total number of bytes transferred is the same. Providing accessor exports instead of direct access to tables also makes your API more flexible to future changes.
+
+```lua title="BAD"
+exports('GetTable', function()
+    return myTable
+end)
+```
+```lua title="GOOD"
+exports('GetValue, function(key)
+    return myTable[key]
+end
+```
 
 ## Use guard clauses
 Often before doing the "real" work of a function, certain pre-conditions must be met. Guard clauses are conditional statements that provide early returns to check certain conditions. This allows the reader to also exit early, rather than reading the entire function.
